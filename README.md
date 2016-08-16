@@ -1,5 +1,4 @@
 # PuffContext
-PuffContext library stores designed to store the application PuffContext.
 Library PuffContext differs from the basic library Context so that it contexts exist in the form of layers, and this layer can be removed if necessary variables.
 
 [![API documentation](https://godoc.org/github.com/claygod/PuffContext?status.svg)](https://godoc.org/github.com/claygod/PuffContext)
@@ -51,5 +50,14 @@ Methods:
 -  *New* - create a new PuffContext
 -  *Set* - add the variable in PuffContext.
 -  *Get* - get variable (from the context).
--  *Get* - fix the state to create a branch.
+-  *Fix* - fix the state to create a branch.
 -  *Del* - remove variable (can only be from the current branch!).
+
+# Perfomance
+
+Library 11 shows a slightly higher speed
+
+`
+BenchmarkPuffContext-4	2000000000	         0.05 ns/op
+BenchmarkContext-4    	2000000000	         0.09 ns/op
+`
