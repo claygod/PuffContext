@@ -47,7 +47,6 @@ func (pc *PuffContext) Del(key interface{}) bool {
 	if _, ok := pc.hash[key]; ok {
 		delete(pc.hash, key)
 		return true
-	} else {
-		return false
 	}
+	return false
 }
