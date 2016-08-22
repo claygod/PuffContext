@@ -58,7 +58,7 @@ func (pc *PuffContext) Clear() bool { // *PuffContext
 		pc.hash = pc.parent.hash
 		pc.parent = pc.parent.parent
 		return true
-	} else {
-		return false
 	}
+	return false
+
 }
