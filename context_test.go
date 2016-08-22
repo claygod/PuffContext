@@ -125,3 +125,40 @@ func TestDelPuffContext(t *testing.T) {
 		t.Error("Error in getting a variable 'a' - 5 != ", c1.Get("a"))
 	}
 }
+
+func TestClearPuffContext(t *testing.T) {
+	c1 := New()
+	c1.Set("a", 5)
+	c1.Set("b", 6)
+
+	c10 := c1.Fix()
+	c10.Set("a", 15)
+	c10.Set("b", 16)
+
+	c10.Clear()
+
+	if c10.Get("a") != 5 {
+		t.Error("Unable to remove the current context layer (the last branch) 'a' - 5 != ", c10.Get("a"))
+	}
+	if c10.Get("b") != 6 {
+		t.Error("Unable to remove the current context layer (the last branch) 'b' - 6 != ", c10.Get("b"))
+	}
+
+	c10.Clear()
+
+	if c10.Get("a") != 5 {
+		t.Error("Remove the first layer of context (should not be deleted) 'a' - 5 != ", c10.Get("a"))
+	}
+	c20 := c10.Fix()
+	c20.Set("a", 25)
+	c30 := c20.Fix()
+	c30.Set("a", 35)
+
+	if c30.Get("a") != 35 {
+		t.Error("Error in getting a modified variable 'a' - 35 != ", c10.Get("a"))
+	}
+	c30.Clear()
+	if c30.Get("a") != 25 {
+		t.Error("Unable to remove the current context layer (the last branch) 'a' - 25 != ", c20.Get("a"))
+	}
+}

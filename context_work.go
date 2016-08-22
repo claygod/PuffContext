@@ -47,6 +47,18 @@ func (pc *PuffContext) Del(key interface{}) bool {
 	if _, ok := pc.hash[key]; ok {
 		delete(pc.hash, key)
 		return true
+	} else {
+		return false
 	}
-	return false
+}
+
+// Clear - remove the current context layer (the last branch).
+func (pc *PuffContext) Clear() bool { // *PuffContext
+	if pc.parent != nil {
+		pc.hash = pc.parent.hash
+		pc.parent = pc.parent.parent
+		return true
+	} else {
+		return false
+	}
 }
