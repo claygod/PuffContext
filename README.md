@@ -40,6 +40,9 @@ func main() {
     fmt.Print("\n Read variable in c3: 'b' -> ", c3.Get("b")) // --> 6 !!!
 	c3.Del("a")
 	fmt.Print("\n Read variable in c3: 'a' -> ", c3.Get("a")) // --> 5 !!!
+	c2.Clear()
+	fmt.Print("\n Read variable in c2: 'a' -> ", c3.Get("a")) // --> 5 !!!
+	fmt.Print("\n Read variable in c2: 'b' -> ", c3.Get("b")) // --> 6 !!!
 }
 
 ```
