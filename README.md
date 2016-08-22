@@ -55,6 +55,7 @@ Methods:
 -  *Get* - get variable (from the context).
 -  *Fix* - fix the state to create a branch.
 -  *Del* - remove variable (can only be from the current branch!).
+-  *Clear* - remove the current context layer (the last branch).
 
 # Perfomance
 
